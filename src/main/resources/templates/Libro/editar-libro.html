@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Editar Libro</title>
+    <script type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Encuentra tu libro</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  th:href="@{/libros}"
+                  >Libros</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  th:href="@{/autores}"
+                  >Autores</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  th:href="@{/categorias}"
+                  >Categorías</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <h1>Editar Libro</h1>
+      <form th:action="@{/editLibro}" th:object="${libro}" method="POST">
+        <div class="form-floating mb-3">
+          <input class="form-control" id="id" th:field="${libro.id}" />
+          <label for="id">Identificador</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input class="form-control" id="titulo" th:field="${libro.titulo}" />
+          <label for="titulo">Titulo</label>
+        </div>
+        <div class="form-floating mb-3">
+          <select
+            class="form-select"
+            id="autor"
+            type="text"
+            th:field="${libro.autor}"
+          >
+            <option th:value="${libro.autor.nombre}"></option>
+            <option
+              th:each="autor: ${listaAutor}"
+              th:text="${autor.nombre}"
+              th:value="${autor.id}"
+              th:field="${libro.autor}"
+            ></option>
+          </select>
+          <label for="autor">Autores</label>
+        </div>
+        <div class="form-floating mb-3">
+          <select
+            class="form-select"
+            id="categoria"
+            th:field="${libro.categoria}"
+          >
+            <option value="">-- Seleccione una categoria --</option>
+            <option
+              th:each="categoria: ${listaCategorias}"
+              th:text="${categoria.descripcion}"
+              th:value="${categoria.id}"
+            ></option>
+          </select>
+          <label for="categoria">Categorias</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            id="descripcion"
+            th:field="${libro.descripcion}"
+          />
+          <label for="descripcion">Descripcion</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input class="form-control" id="annio" th:field="${libro.annio}" />
+          <label for="annio">Año</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input class="form-control" id="isbn" th:field="${libro.isbn}" />
+          <label for="isbn">ISBN</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            id="cantPaginas"
+            th:field="${libro.cantPaginas}"
+          />
+          <label for="cantPaginas">Cantidad de paginas</label>
+        </div>
+        <button class="btn btn-primary" type="submit">Guardar</button>
+      </form>
+    </div>
+  </body>
+</html>

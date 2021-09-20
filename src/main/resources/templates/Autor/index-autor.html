@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <title>Autores</title>
+    <script type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="container">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Encuentra tu libro</a>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="#"
+                  >Inicio</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  th:href="@{/libros}"
+                  >Libros</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  th:href="@{/autores}"
+                  >Autores</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  th:href="@{/categorias}"
+                  >Categorías</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <div class="row">
+        <div class="col-9">
+          <h1>Listado de Autores</h1>
+        </div>
+        <div class="col-3 text-end">
+          <a th:href="@{/crearAutor}" class="btn btn-success">Ingresar Nuevo Autor</a>
+        </div>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-bordered border-secondary">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nombre</th>
+              <th>Nacionalidad</th>
+              <th>Fecha Nacimiento</th>
+              <th>Seudonimo</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr
+              th:if="${listaAutores != null}"
+              th:each="autor: ${listaAutores}"
+            >
+              <td th:text="${autor.id}"></td>
+              <td th:text="${autor.nombre}"></td>
+              <td th:text="${autor.nacionalidad}"></td>
+              <td th:text="${autor.fechaNacimiento}"></td>
+              <td th:text="${autor.seudonimo}"></td>
+              <td>
+                <a th:href="@{/autor/editar/} + ${autor.id}" class="btn btn-primary">Editar</a>
+                <a th:href="@{/deleteAutor/} + ${autor.id}" class="btn btn-danger">Eliminar</a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>
