@@ -18,9 +18,9 @@ public class LibroServiceIpml implements LibroService {
     public LibroServiceIpml() {
         this.listaLibros = new ArrayList<Libro>(
             Arrays.asList(
-                new Libro(1, "Manual de cocina", new Autor(1, "Felipe Azua", "chileno", null, "pipe", null), new Categoria(1, "Aventura", null), "Libro para aprender a cocinar", "2021", "999-99-99999-99-9", 100),
-                new Libro(2, "Los vencejos", new Autor(1, "Felipe Azua", "chileno", null, "pipe", null), new Categoria(1, "Aventura", null),  "Novela sobre un profesor", "2020", "888-88-88888-88-8", 90),
-                new Libro(3, "A fuego lento", new Autor(1, "Felipe Azua", "chileno", null, "pipe", null), new Categoria(1, "Aventura", null),  "Novela de un accidente", "2019", "777-77-77777-77-7", 190)
+                new Libro(1, "Manual de cocina", new Autor("FEL2008", "Felipe", "Azua", "chileno", null, "pipe", null), new Categoria(1, "Aventura", null), "Libro para aprender a cocinar", "2021", "999-99-99999-99-9", 100),
+                new Libro(2, "Los vencejos", new Autor("MIC1999", "Mickel", "muñoz", "chileno", null, "pipe", null), new Categoria(1, "Aventura", null),  "Novela sobre un profesor", "2020", "888-88-88888-88-8", 90),
+                new Libro(3, "A fuego lento", new Autor("MAN1998", "Manuel", "Lara", "chileno", null, "pipe", null), new Categoria(1, "Aventura", null),  "Novela de un accidente", "2019", "777-77-77777-77-7", 190)
             )
         );
     }

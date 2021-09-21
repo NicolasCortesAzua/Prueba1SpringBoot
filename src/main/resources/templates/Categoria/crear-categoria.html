@@ -60,25 +60,28 @@
       >
         <div class="form-floating mb-3">
           <input
-            class="form-control"
-            id="ide"
+            class="form-control has-validation"
+            name="id"
+            id="id"
+            type="number"
             placeholder="Nombre Categoria"
             th:field="*{id}"
           />
-          <label for="ide">Identificador de la categoria</label>
+          <label for="id">Identificador de la categoria</label>
         </div>
-        <div th:if="${#fields.hasErrors('id')}" th:errors="*{id}" class="invalid-feedback">
-          <p>Ingrese Id</p>
-        </div>
+        <div th:if="${#fields.hasErrors('id')}" th:errors=*{id} class="text-danger"></div>
         <div class="form-floating mb-3">
           <input
             class="form-control"
+            name="descripcion"
             id="descripcion"
+            type="text"
             placeholder="Nombre Categoria"
             th:field="*{descripcion}"
           />
           <label for="descripcion">Descripcion</label>
         </div>
+        <div th:if="${#fields.hasErrors('descripcion')}" th:errors=*{descripcion} class="text-danger"></div>
         <button class="btn btn-primary" type="submit">Crear</button>
       </form>
     </div>

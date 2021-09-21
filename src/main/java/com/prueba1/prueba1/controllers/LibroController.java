@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import com.prueba1.prueba1.editors.AutorEditor;
+import com.prueba1.prueba1.editors.CategoriaEditor;
 import com.prueba1.prueba1.models.Autor;
 import com.prueba1.prueba1.models.Categoria;
 import com.prueba1.prueba1.models.Libro;
@@ -15,7 +17,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +40,12 @@ public class LibroController {
     @Autowired
     private AutorService autorService;
 
+    @Autowired
+    private AutorEditor autorEditor;
+
+    @Autowired
+    private CategoriaEditor categoriaEditor; 
+
     @GetMapping("/libros")
     public String libros(){
         return "Libro/index-libro";
@@ -55,8 +65,17 @@ public class LibroController {
                         BindingResult result,
                         Model model,
                         SessionStatus status){
+        if (result.hasErrors()) {
+            return "Libro/crear-libro";
+        }
         libroService.Crear(libro);
         return "redirect:/libros";
+    }
+
+    @InitBinder
+    public void initBinder(WebDataBinder binder){
+        binder.registerCustomEditor(Autor.class, "autor", autorEditor);
+        binder.registerCustomEditor(Categoria.class, "categoria", categoriaEditor);
     }
 
     @GetMapping("/libro/editar/{id}")
@@ -82,7 +101,9 @@ public class LibroController {
                             BindingResult result,
                             Model model,
                             SessionStatus status){
-                                    
+        if (result.hasErrors()) {
+            return "Libro/editar-libro";
+        }
         libroService.Editar(libro);
         return "redirect:/libros";
     }

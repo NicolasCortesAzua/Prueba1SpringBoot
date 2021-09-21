@@ -52,15 +52,18 @@
         </div>
       </nav>
       <h1>Editar Autor</h1>
-      <form th:action="@{/editAutor}" th:object="${autor}" method="POST">
+      <form th:action="@{/editAutor}" 
+            th:object="${autor}" 
+            method="POST">
         <div class="form-floating mb-3">
           <input
             class="form-control"
-            id="ide"
+            id="id"
             placeholder="Nombre Categoria"
-            th:field="*{autor.id}"
+            th:field="${autor.id}"
+            readonly
           />
-          <label for="ide">Identificador de la categoria</label>
+          <label for="id">Identificador del Autor</label>
         </div>
         <div class="form-floating mb-3">
           <input
@@ -71,6 +74,17 @@
           />
           <label for="nombre">Nombre</label>
         </div>
+        <div th:if="${#fields.hasErrors('nombre')}" th:errors=*{nombre} class="text-danger"></div>
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            id="apellido"
+            placeholder="Apellido Autor"
+            th:field="${autor.apellido}"
+          />
+          <label for="apellido">Apellido</label>
+        </div>
+        <div th:if="${#fields.hasErrors('apellido')}" th:errors=*{apellido} class="text-danger"></div>
         <div class="form-floating mb-3">
           <input
             class="form-control"
@@ -80,15 +94,19 @@
           />
           <label for="nacionalidad">Nacionalidad</label>
         </div>
+        <div th:if="${#fields.hasErrors('nacionalidad')}" th:errors=*{nacionalidad} class="text-danger"></div>
         <div class="form-floating mb-3">
           <input
             class="form-control"
             id="fechaNacimiento"
             placeholder="Fecha Nacimiento"
+            type="date"
             th:field="${autor.fechaNacimiento}"
+            th:value="${autor.fechaNacimiento}"
           />
           <label for="fechaNacimiento">Fecha Nacimiento</label>
         </div>
+        <div th:if="${#fields.hasErrors('fechaNacimiento')}" th:errors=*{fechaNacimiento} class="text-danger"></div>
         <div class="form-floating mb-3">
           <input
             class="form-control"
@@ -98,6 +116,7 @@
           />
           <label for="seudonimo">Seudonimo</label>
         </div>
+        <div th:if="${#fields.hasErrors('seudonimo')}" th:errors=*{seudonimo} class="text-danger"></div>
         <button class="btn btn-primary" type="submit">Confirmar</button>
       </form>
     </div>

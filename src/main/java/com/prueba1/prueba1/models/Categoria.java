@@ -2,17 +2,16 @@ package com.prueba1.prueba1.models;
 
 import java.util.List;
 
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.Range;
-
 public class Categoria {
+    
     @NotNull
-    @Range(min=1, max=2)
     public Integer id;
 
-    @NotNull
+    @NotEmpty
     @Size(min=3, max=255)
     public String descripcion;
     public List<Libro> libros;

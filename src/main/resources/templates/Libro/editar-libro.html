@@ -53,7 +53,9 @@
       </nav>
 
       <h1>Editar Libro</h1>
-      <form th:action="@{/editLibro}" th:object="${libro}" method="POST">
+      <form th:action="@{/editLibro}" 
+            th:object="${libro}" 
+            method="POST">
         <div class="form-floating mb-3">
           <input class="form-control" id="id" th:field="${libro.id}" />
           <label for="id">Identificador</label>

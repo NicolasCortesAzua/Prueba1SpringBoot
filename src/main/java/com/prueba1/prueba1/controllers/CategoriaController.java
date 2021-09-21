@@ -46,7 +46,7 @@ public class CategoriaController {
                         Model model,
                         SessionStatus status){
         if (result.hasErrors()) {
-            return "redirect:/crearCategoria";
+            return "Categoria/crear-categoria";
         }
         categoriaService.Crear(categoria);
         return "redirect:/categorias";
@@ -75,7 +75,9 @@ public class CategoriaController {
                                 BindingResult result,
                                 Model model,
                                 SessionStatus status){
-                                    
+        if (result.hasErrors()) {
+            return "Categoria/editar-categoria";
+        }
         categoriaService.Editar(categoria);
         return "redirect:/categorias";
     }

@@ -7,7 +7,7 @@ import java.util.List;
 public interface AutorService {
     public void Crear(Autor creaAutor);
     public void Editar(Autor editaAutor);
-    public void Eliminar(Integer Id);
-    public Autor BuscarPorId(Integer Id);
+    public void Eliminar(String Id);
+    public Autor BuscarPorId(String Id);
     public List<Autor> Listar();
 }

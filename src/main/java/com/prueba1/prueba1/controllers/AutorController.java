@@ -46,13 +46,16 @@ public class AutorController {
                         BindingResult result,
                         Model model,
                         SessionStatus status){
+        if (result.hasErrors()) {
+            return "Autor/crear-autor";
+        }
         autorService.Crear(autor);
         return "redirect:/autores";
     }
 
     @GetMapping("/autor/editar/{id}")
     public String editarAutor(@SessionAttribute(name= "autor", required = false ) Autor autor,
-                                @PathVariable Integer id,
+                                @PathVariable String id,
                                 Model model, 
                                 SessionStatus status){
         autor = autorService.BuscarPorId(id);
@@ -73,12 +76,15 @@ public class AutorController {
                             BindingResult result,
                             Model model,
                             SessionStatus status){
+        if (result.hasErrors()) {
+            return "Autor/editar-autor";
+        }
         autorService.Editar(autor);
         return "redirect:/autores";
     }
 
     @GetMapping("/deleteAutor/{id}")
-    public String deleteAutor(@PathVariable("id") Integer id, Model model){
+    public String deleteAutor(@PathVariable("id") String id, Model model){
         autorService.Eliminar(id);
         return "redirect:/autores";
     }

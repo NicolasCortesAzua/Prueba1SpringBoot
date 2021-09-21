@@ -1,13 +1,40 @@
 package com.prueba1.prueba1.models;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Range;
+
 public class Libro {
+    @NotNull
     public Integer id;
+
+    @NotNull
+    @NotBlank
+    @Size(min=5, max=255)
     public String titulo;
+
+    @NotNull
     public Autor autor;
+
+    @NotNull
     public Categoria categoria;
+
+    @NotNull
+    @Size(min=3, max=255)
     public String descripcion;
+
+    @NotNull
     public String annio;
+
+    @NotNull
+    @Pattern(regexp = "[0-9]{4}[-][0-9]{2}[-][0-9]{5}[-][0-9]{2}[-][0-9]{1}")
     public String isbn; // Codigo de los libros
+
+    @NotNull
+    @Range(min=1)
     public Integer cantPaginas;
 
     public Libro() {}

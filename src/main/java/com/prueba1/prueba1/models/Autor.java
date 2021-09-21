@@ -1,33 +1,50 @@
 package com.prueba1.prueba1.models;
 
-import java.sql.Date;
 import java.util.List;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Autor {
-    public Integer id;
+    
+    public String id;
+
+    @NotNull
+    @Size(min=4, max=255)
     public String nombre;
+
+    @NotNull
+    @Size(min=4, max=255)
+    public String apellido;
+
+    @NotNull
     public String nacionalidad;
-    public Date fechaNacimiento;
+
+    @NotNull
+    public String fechaNacimiento;
+    
+    @Size(min=3, max=255)
     public String seudonimo;
     public List<Libro> libros;
 
     public Autor() {}
 
-    public Autor(Integer id, String nombre, String nacionalidad, Date fechaNacimiento, String seudonimo,
+    public Autor(String id, String nombre, String apellido, String nacionalidad, String fechaNacimiento, String seudonimo,
             List<Libro> libros) {
         this.id = id;
         this.nombre = nombre;
+        this.apellido = apellido;
         this.nacionalidad = nacionalidad;
         this.fechaNacimiento = fechaNacimiento;
         this.seudonimo = seudonimo;
         this.libros = libros;
     }
 
-    public Integer getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -39,6 +56,14 @@ public class Autor {
         this.nombre = nombre;
     }
 
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
     public String getNacionalidad() {
         return nacionalidad;
     }
@@ -47,11 +72,11 @@ public class Autor {
         this.nacionalidad = nacionalidad;
     }
 
-    public Date getFechaNacimiento() {
+    public String getFechaNacimiento() {
         return fechaNacimiento;
     }
 
-    public void setFechaNacimiento(Date fechaNacimiento) {
+    public void setFechaNacimiento(String fechaNacimiento) {
         this.fechaNacimiento = fechaNacimiento;
     }
 

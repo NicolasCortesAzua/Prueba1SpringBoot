@@ -62,6 +62,7 @@
           />
           <label for="id">Identificador</label>
         </div>
+        <div th:if="${#fields.hasErrors('id')}" th:errors=*{id} class="text-danger"></div>
         <div class="form-floating mb-3">
           <input
             class="form-control"
@@ -70,6 +71,7 @@
           />
           <label for="titulo">Titulo</label>
         </div>
+        <div th:if="${#fields.hasErrors('titulo')}" th:errors=*{titulo} class="text-danger"></div>
         <div class="form-floating mb-3">
           <select
             class="form-select"
@@ -86,8 +88,9 @@
           </select>
           <label for="autor">Autores</label>
         </div>
+        <div th:if="${#fields.hasErrors('autor')}" th:errors=*{autor} class="text-danger"></div>
         <div class="form-floating mb-3">
-          <select class="form-select" id="categoria">
+          <select class="form-select" id="categoria" th:field="*{categoria}">
             <option value="" selected>-- Seleccione una categoria --</option>
             <option
               th:each="categoria: ${listaCategorias}"
@@ -97,6 +100,7 @@
           </select>
           <label for="categoria">Categorias</label>
         </div>
+        <div th:if="${#fields.hasErrors('categoria')}" th:errors=*{categoria} class="text-danger"></div>
         <div class="form-floating mb-3">
           <input
             class="form-control"
@@ -105,6 +109,7 @@
           />
           <label for="descripcion">Descripcion</label>
         </div>
+        <div th:if="${#fields.hasErrors('descripcion')}" th:errors=*{descripcion} class="text-danger"></div>
         <div class="form-floating mb-3">
           <input
             class="form-control"
@@ -113,6 +118,7 @@
           />
           <label for="annio">Año</label>
         </div>
+        <div th:if="${#fields.hasErrors('annio')}" th:errors=*{annio} class="text-danger"></div>
         <div class="form-floating mb-3">
           <input
             class="form-control"
@@ -121,6 +127,7 @@
           />
           <label for="isbn">ISBN</label>
         </div>
+        <div th:if="${#fields.hasErrors('isbn')}" th:errors=*{isbn} class="text-danger"></div>
         <div class="form-floating mb-3">
           <input
             class="form-control"
@@ -129,6 +136,7 @@
           />
           <label for="cantPaginas">Cantidad de paginas</label>
         </div>
+        <div th:if="${#fields.hasErrors('cantPaginas')}" th:errors=*{cantPaginas} class="text-danger"></div>
         <button class="btn btn-primary">Guardar</button>
       </form>
     </div>
